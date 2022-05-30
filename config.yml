@@ -1,0 +1,10 @@
+sarufi:
+  username: kalebu@neurotech.africa #Your user name
+  password: 123 #Your password
+  project:
+    id: 3 # Project ID here
+
+telegram:
+  token: 5539985581:AAGwHSY4Phn3ORD7Xac8sNDj-eHlam8wvA8 # Telegram token
+  start_message: |
+    Hi {name}, I can help you with ABC
