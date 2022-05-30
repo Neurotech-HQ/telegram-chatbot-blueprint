@@ -1,6 +1,6 @@
 sarufi:
   username: kalebu@neurotech.africa #Your user name
-  password: 123 #Your password
+  password: "123" #Your password
   project:
     id: 3 # Project ID here
 

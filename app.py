@@ -25,11 +25,13 @@ def load_config():
 
 
 config = load_config()
+print(config)
+# exit(1)
 
 # Set up Sarufi
 sarufi = Sarufi(config["sarufi"]["username"], config["sarufi"]["password"])
 
-updater = Updater(sarufi["telegram"]["token"])
+updater = Updater(config["telegram"]["token"])
 mybot = updater.dispatcher
 
 # initialize the logger
@@ -40,7 +42,7 @@ def respond(message, chat_id):
     """
     Responds to the user's message.
     """
-    response = sarufi.chat(message, chat_id)
+    response = sarufi.chat(config["sarufi"]["project"]["id"], chat_id, message)
     response = response["message"]
     return response
 
