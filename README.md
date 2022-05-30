@@ -45,7 +45,7 @@ If you will face any issue, please raise one so as we can fix it as soon as poss
 
 ## Contribution
 
-If there is something you would like to contribute, from typos to code to documentation, feel free to do so, ```JUST FORK IT``.
+If there is something you would like to contribute, from typos to code to documentation, feel free to do so, ```JUST FORK IT```.
 
 ## Credits
 
