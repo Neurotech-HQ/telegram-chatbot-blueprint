@@ -1,3 +1,5 @@
+<samp>
+
 # telegram-chatbot-blueprint
 
 A blueprint for deploying telegram bots
@@ -51,3 +53,5 @@ All the credits to
 
 1. [kalebu](https://github.com/Kalebu/)
 2. All other contributors
+
+</samp>
