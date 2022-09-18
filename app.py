@@ -17,7 +17,8 @@ from telegram.ext import (
 def load_config():
     try:
         with open("config.yaml", "r") as f:
-            config = yaml.load(f)
+            # load with safe moad
+            config = yaml.safe_load(f)
         return config
     except FileNotFoundError:
         print("Config file not found")
@@ -42,7 +43,7 @@ def respond(message, chat_id):
     """
     Responds to the user's message.
     """
-    response = sarufi.chat(config["sarufi"]["project"]["id"], chat_id, message)
+    response = sarufi.chat(config["sarufi"]["bot_id"], chat_id, message)
     response = response["message"]
     return response
 

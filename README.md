@@ -6,7 +6,7 @@ A blueprint for deploying telegram bots
 
 ## Requirements
 
-Make sure you have [sarufi package](<https://github.com/Neurotech-HQ/sarufi-python-sdk>) installed on your machine before launching your telegram bot, you can easily install by the following command;
+Make sure you have [sarufi package](https://github.com/Neurotech-HQ/sarufi-python-sdk) installed on your machine before launching your telegram bot, you can easily install by the following command;
 
 ```bash
 git clone https://github.com/Neurotech-HQ/sarufi-python-sdk
@@ -20,15 +20,15 @@ Configure yaml to resemble your project details and telegram keys
 
 ```YAML
 sarufi:
-  username: kalebu@neurotech.africa #Your user name
-  password: 123 #Your password
-  project:
-    id: 3 # Project ID here
+  username: testing@gmail.com #Your user name
+  password: xxx  #Your password
+  bot_id: 123456789 #Your bot id
 
 telegram:
-  token: 5539985581:AAGwHSY4Phn3ORD7Xac8sNDj-eHlam8wvA8 # Telegram token
+  token: telegram_token # Telegram token
   start_message: |
     Hi {name}, I can help you with ABC
+
 ```
 
 ## LAUNCH
@@ -45,7 +45,7 @@ If you will face any issue, please raise one so as we can fix it as soon as poss
 
 ## Contribution
 
-If there is something you would like to contribute, from typos to code to documentation, feel free to do so, ```JUST FORK IT```.
+If there is something you would like to contribute, from typos to code to documentation, feel free to do so, `JUST FORK IT`.
 
 ## Credits
 
