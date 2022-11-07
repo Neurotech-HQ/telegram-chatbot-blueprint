@@ -1,0 +1,2 @@
+python-telegram-bot==13.14
+sarufi==0.0.5
