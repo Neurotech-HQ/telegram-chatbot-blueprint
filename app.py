@@ -44,7 +44,7 @@ def respond(message, chat_id):
     Responds to the user's message.
     """
     response = sarufi.chat(config["sarufi"]["bot_id"], chat_id, message)
-    response = response["message"]
+    response = response["message"][0]
     return response
 
 
