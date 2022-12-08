@@ -44,7 +44,7 @@ def respond(message, chat_id):
     Responds to the user's message.
     """
     response = sarufi.chat(config["sarufi"]["bot_id"], chat_id, message)
-    response = response["message"][0]
+    response = response["message"]
     return response
 
 
@@ -57,7 +57,8 @@ def simulate_typing(update: Update, context: CallbackContext):
 
 def reply_with_typing(update: Update, context: CallbackContext, message):
     simulate_typing(update, context)
-    context.bot.send_message(chat_id=update.effective_chat.id, text=message)
+    for _message in message:
+        context.bot.send_message(chat_id=update.effective_chat.id, text=_message)
 
 
 def start(update: Update, context: CallbackContext):
