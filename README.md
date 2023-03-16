@@ -89,6 +89,7 @@ If there is something you would like to contribute, from typos to code to docume
 All the credits to
 
 1. [kalebu](https://github.com/Kalebu/)
-2. All other contributors
+2. [Jovine](https://github.com/jovyinny)
+3. All other contributors
 
 </samp>
