@@ -1,9 +1,0 @@
-sarufi:
-  username: testing@gmail.com #Your user name
-  password: xxx  #Your password
-  bot_id: 123456789 #Your bot id
-
-telegram:
-  token: telegram_token # Telegram token
-  start_message: |
-    Hi {name}, I can help you with ABC

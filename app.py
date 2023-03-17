@@ -1,9 +1,9 @@
-# 5539985581:AAGwHSY4Phn3ORD7Xac8sNDj-eHlam8wvA8
-import yaml
+import os
 import time
 import logging
 import telegram
 from sarufi import Sarufi
+from dotenv import load_dotenv
 from telegram import Update
 from telegram.ext import (
     CommandHandler,
@@ -13,26 +13,12 @@ from telegram.ext import (
     CallbackContext,
 )
 
-
-def load_config():
-    try:
-        with open("config.yaml", "r") as f:
-            # load with safe moad
-            config = yaml.safe_load(f)
-        return config
-    except FileNotFoundError:
-        print("Config file not found")
-        exit(1)
-
-
-config = load_config()
-print(config)
-# exit(1)
-
+# load .env 
+load_dotenv()
 # Set up Sarufi
-sarufi = Sarufi(config["sarufi"]["username"], config["sarufi"]["password"])
+sarufi = Sarufi(os.environ["sarufi_username"], os.environ["sarufi_password"])
 
-updater = Updater(config["telegram"]["token"])
+updater = Updater(os.environ["token"])
 mybot = updater.dispatcher
 
 # initialize the logger
@@ -43,7 +29,7 @@ def respond(message, chat_id):
     """
     Responds to the user's message.
     """
-    response = sarufi.chat(config["sarufi"]["bot_id"], chat_id, message)
+    response = sarufi.chat(os.environ["sarufi_bot_id"], chat_id, message)
     response = response["message"]
     return response
 
@@ -69,7 +55,7 @@ def start(update: Update, context: CallbackContext):
     reply_with_typing(
         update,
         context,
-        config["telegram"]["start_message"].format(name=first_name),
+        os.environ["start_message"].format(name=first_name),
     )
 
 
