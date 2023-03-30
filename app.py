@@ -31,11 +31,11 @@ bot_name=sarufi.get_bot(os.environ["sarufi_bot_id"]).name
 logger = logging.getLogger()
 
 
-async def respond(message, chat_id)->dict:
+async def respond(message, chat_id,message_type="text")->dict:
     """
     Responds to the user's message.
     """
-    response = sarufi.chat(os.environ["sarufi_bot_id"], chat_id, message,channel="whatsapp")
+    response = sarufi.chat(os.environ["sarufi_bot_id"], chat_id, message,channel="whatsapp",message_type= message_type)
     response = response.get("actions")
     return response
 
@@ -65,37 +65,45 @@ def get_buttons(data:dict,type:str):
 
 async def reply_with_typing(update: Update, context: CallbackContext, message):
     await simulate_typing(update, context)
-
+    chat_id=update.effective_chat.id
     if isinstance(message,dict) or isinstance(message,list):
 
         for action in message:
             if action.get("send_message") and not action["send_message"]==['']:
                 message = action.get("send_message")
+
                 if isinstance(message, list):
                     message = "\n".join(message)
-                await context.bot.send_message(chat_id=update.effective_chat.id, text=message)
+                await context.bot.send_message(chat_id=chat_id, text=message)
             
             elif action.get("send_reply_button"):
                 reply_button = action.get("send_reply_button")
-              
                 message=reply_button.get("body").get("text")
                 buttons= get_buttons(reply_button.get("action"),"reply_button")              
                 markdown=InlineKeyboardMarkup(buttons)
-                await context.bot.send_message(chat_id=update.effective_chat.id, text=message,reply_markup=markdown)
+
+                await context.bot.send_message(chat_id=chat_id, text=message,reply_markup=markdown)
 
             elif action.get("send_button"):
                 buttons=action.get("send_button")
                 message=buttons.get("body")
                 menus= get_buttons(buttons.get("action"),"button")
                 markdown=InlineKeyboardMarkup(menus)
-                await context.bot.send_message(chat_id=update.effective_chat.id, text=message,reply_markup=markdown)
+
+                await context.bot.send_message(chat_id=chat_id, text=message,reply_markup=markdown)
 
     else:
-        await context.bot.send_message(chat_id=update.effective_chat.id, text=message)
+        await context.bot.send_message(chat_id=chat_id, text=message)
+
+
+def get_clicked_button_text(buttons:tuple,button_callback_data:str)-> str:
+  for button in buttons:
+      if button[0].callback_data==button_callback_data:
+        return button[0].text
 
 
 # handlers
-async def start(update: Update, context: CallbackContext):
+async def start(update: Update, context: CallbackContext)->None:
     """
     Starts the bot.
     """
@@ -123,7 +131,28 @@ async def echo(update: Update, context: CallbackContext):
     await reply_with_typing(update, context, response)
 
 
-async def error(update: Update, context: CallbackContext):
+async def button_click(update: Update, context: CallbackContext)->None:
+    query = update.callback_query
+    buttons=query.message.reply_markup.inline_keyboard
+    message=query.data
+    button_text = get_clicked_button_text(buttons,message)
+    context.user_data["selection"] = button_text
+    chat_id=update.effective_chat.id
+  
+    await context.bot.send_message(chat_id=chat_id, 
+                                   text=button_text, 
+                                   reply_markup=ReplyKeyboardRemove(), 
+                                   reply_to_message_id=query.message.message_id
+                                   )
+  
+    response = await respond(message=message,
+                             chat_id=chat_id, 
+                             message_type="interactive"
+                             )
+    await reply_with_typing(update, context, response)
+
+
+async def error(update: Update, context: CallbackContext)->None:
     """Log Errors caused by Updates."""
     logger.warning('Update "%s" caused error "%s"', update, context.error)
 
@@ -134,6 +163,7 @@ def main()->None:
     mybot.add_handler(CommandHandler("start", start))
     mybot.add_handler(CommandHandler("help", help))
     mybot.add_handler(MessageHandler(filters.TEXT, echo))
+    mybot.add_handler(CallbackQueryHandler(button_click))
     mybot.add_error_handler(error)
 
     mybot.run_polling()
