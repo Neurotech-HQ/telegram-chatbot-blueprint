@@ -53,7 +53,7 @@ In the file we are going to add the following credetials. You can do it in the t
   echo "sarufi_password = Your sarufi password" >> .env &
   echo "sarufi_bot_id= bot id" >> .env & 
   echo "token = telegram token" >>.env &
-  echo "start_message= Hi {name}, Welcome To Your bot name. How can i help you" >> .env
+  echo "start_message= Hi {name}, Welcome To {bot_name}, How can i help you" >> .env
   ```
     
 - Open `.env` file in text editor
