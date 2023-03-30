@@ -18,33 +18,30 @@ A blueprint for deploying telegram bots made using [Sarufi](https://docs.sarufi.
 
 - Make virtual environment and install requirements
 
-  Using virtual environment is a good practice, so we are going to create one. You can read more on [why use virtual environment](https://www.freecodecamp.org/news/how-to-setup-virtual-environments-in-python/). We install sarufi and dotenv which is used to laod envirnoment variables.
+  Using virtual environment is a good practice, so we are going to create one. You can read more on [why use virtual environment](https://www.freecodecamp.org/news/how-to-setup-virtual-environments-in-python/). We shall install all necessary packages in the environment
 
   ```bash
   python3 -m venv sarufi
   source sarufi/bin/activate
-  pip3 install --upgrade sarufi
-  pip3 install python-dotenv
   ```
-
-We have the package required to get started
 
 ## CONFIGURATION
 
-In this part, we are going to clone the [Sarufi Telegram Chatbot deployment Blueprint](https://github.com/Neurotech-HQ/telegram-chatbot-blueprint.git). Run
+In this part, we are going to clone the [Sarufi Telegram Chatbot deployment Blueprint](https://github.com/Neurotech-HQ/telegram-chatbot-blueprint.git) and install the packages. Run
 
 ```bash
 git clone https://github.com/Neurotech-HQ/telegram-chatbot-blueprint.git
 cd telegram-chatbot-blueprint
+pip3 install -r requirements.txt
 ```
 
-We need to configure our credentials. Navigate into `telegram-chatbot-blueprint` folder to create a file to hold environment variables, `.env`
+After installing packages,we need to configure our credentials. In `telegram-chatbot-blueprint`, create a file(`.env`) to hold environment variables.
 
 ```bash
 touch .env
 ```
 
-In the file we are going to add the following credetials. You can do it in the terminal or open `.env` then add the following:-
+In the file we are going to add the following credetials. You can do it in the terminal or open using text editor `.env`. Then add the following:-
 
 - In the terminal
 
@@ -53,9 +50,9 @@ In the file we are going to add the following credetials. You can do it in the t
   echo "sarufi_password = Your sarufi password" >> .env &
   echo "sarufi_bot_id= bot id" >> .env & 
   echo "token = telegram token" >>.env &
-  echo "start_message= Hi {name}, Welcome To Your bot name. How can i help you" >> .env
+  echo "start_message= Hi {name}, Welcome To {bot_name}, How can i help you" >> .env
   ```
-    
+
 - Open `.env` file in text editor
 
   ```text
@@ -63,7 +60,7 @@ In the file we are going to add the following credetials. You can do it in the t
   sarufi_password = Your sarufi password
   sarufi_bot_id= bot id
   token = telegram token
-  start_message= Hi {name}, Welcome To Your bot name. How can i help you
+  start_message= Hi {name}, Welcome To {bot_name}, How can i help you
   ```
 
 ## LAUNCH
@@ -75,6 +72,8 @@ python3 app.py
 ```
 
 Open your telegram app, search for your bot --> Send it a text.
+
+**NOTE:** All operations are done in activated virtual environment for convience
 
 ## Issues
 
