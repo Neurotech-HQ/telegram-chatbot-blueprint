@@ -113,7 +113,7 @@ async def reply_with_typing(update: Update, context: CallbackContext, message):
     
     if isinstance(message,dict) or isinstance(message,list):
 
-        for action in message:
+        for action in reversed(message):
             if action.get("send_message") and not action["send_message"]==['']:
                 message = action.get("send_message")
 
