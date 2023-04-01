@@ -59,9 +59,9 @@ Open your telegram app, search for your bot --> Send it a text.
 
 **NOTE:** All operations are done in activated virtual environment for convience
 
-## Running in Replit
+## Running in replit
 
-Clone the repo [telegram chatbot blueprint](https://replit.com/@jovyinny/telegram-chatbot-blueprint)
+Clone [telegram blueprint](https://replit.com/@neurotechafrica/sarufi-telegram-blueprint)
 
 ## Issues
 
