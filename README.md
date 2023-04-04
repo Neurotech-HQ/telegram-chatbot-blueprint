@@ -26,6 +26,7 @@ A blueprint for deploying telegram bots made using [Sarufi](https://docs.sarufi.
   ```
 
 - Creating a telegram bot
+
   To create a chatbot on Telegram, you need to contact the [BotFather](https://telegram.me/BotFather), which is essentially a bot used to create other bots.
 
   The command you need is /newbot which leads to several steps. Follow the steps then you will have you `bot's token`
