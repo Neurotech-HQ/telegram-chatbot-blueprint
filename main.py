@@ -23,7 +23,7 @@ from telegram.ext import (
 # load .env 
 load_dotenv()
 # Set up Sarufi and get bot's name
-sarufi = Sarufi(os.environ["sarufi_username"], os.environ["sarufi_password"])
+sarufi = Sarufi(client_id=os.environ["sarufi_client_id"], client_secret=os.environ["sarufi_client_secret"])
 bot_name=sarufi.get_bot(os.environ["sarufi_bot_id"]).name
 
 

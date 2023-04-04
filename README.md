@@ -25,34 +25,51 @@ A blueprint for deploying telegram bots made using [Sarufi](https://docs.sarufi.
   source sarufi/bin/activate
   ```
 
+- Creating a telegram bot
+  To create a chatbot on Telegram, you need to contact the [BotFather](https://telegram.me/BotFather), which is essentially a bot used to create other bots.
+
+  The command you need is /newbot which leads to several steps. Follow the steps then you will have you `bot's token`
+
 ## CONFIGURATION
 
-In this part, we are going to clone the [Sarufi Telegram Chatbot deployment Blueprint](https://github.com/Neurotech-HQ/telegram-chatbot-blueprint.git) and install the packages. Run
+In this part, we are going to clone the [Sarufi Telegram Chatbot deployment Blueprint](https://github.com/Neurotech-HQ/telegram-chatbot-blueprint.git) and install the packages.
 
-```bash
-git clone https://github.com/Neurotech-HQ/telegram-chatbot-blueprint.git
-cd telegram-chatbot-blueprint
-pip3 install -r requirements.txt
-```
+- Clone and install requirements.
 
-After installing packages, we need to configure our credentials. In `telegram-chatbot-blueprint`, create a file(`.env`) to hold environment variables.
+  Run the commands below
 
-In `.env`, we are going to add the following credetials. Using your favourite text editor add the following:-
+  ```bash
+  git clone https://github.com/Neurotech-HQ/telegram-chatbot-blueprint.git
+  cd telegram-chatbot-blueprint
+  pip3 install -r requirements.txt
+  ```
 
-```text
-sarufi_username= Your sarfi username
-sarufi_password = Your sarufi password
-sarufi_bot_id= bot id
-token = telegram token
-start_message= Hi {name}, Welcome To {bot_name}, How can i help you
-```
+- Getting Sarufi credentials.
+  
+  To authorize our chabot, we are are going to use authorization keys from sarufi. Log in into your [sarufi account](https://sarufi.io). Go to your Profile on account to get Authorization keys(client ID and client secret)
+
+  ![Sarufi authorazation keys](img/sarufi_authorization.png)
+
+- Environment variables
+
+  After installing packages, we need to configure our credentials. In `telegram-chatbot-blueprint`, create a file(`.env`) to hold environment variables.
+
+  In `.env`, we are going to add the following credetials. Using your favourite text editor add the following:-
+
+  ```text
+  sarufi_client_id= Your sarufi ID
+  sarufi_client_secret = Your sarufi password
+  sarufi_bot_id= bot id
+  token = telegram token
+  start_message= Hi {name}, Welcome To {bot_name}, How can i help you
+  ```
 
 ## LAUNCH
 
 Its the time you have been waiting for. Lets lauch 🚀 our bot.
 
 ```python
-python3 app.py
+python3 main.py
 ```
 
 Open your telegram app, search for your bot --> Send it a text.
@@ -61,7 +78,17 @@ Open your telegram app, search for your bot --> Send it a text.
 
 ## Running in replit
 
-Clone [telegram blueprint](https://replit.com/@neurotechafrica/sarufi-telegram-blueprint)
+Clone [telegram blueprint](https://replit.com/@neurotechafrica/sarufi-telegram-blueprint) and add your secret keys. Navigate to your tools in replit --> secrets --> add your secret keys
+
+![Replit tools section](img/replit-tools.png)
+
+|Secret key           | value|
+|---                  |---|
+|sarufi_client_id     |Your sarufi ID|
+|sarufi_client_secret |  Your sarufi password|
+|sarufi_bot_id        | bot id|
+|token                |telegram token|
+|start_message        |Hi {name}, Welcome To {bot_name}, How can i help you|
 
 ## Issues
 
