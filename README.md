@@ -73,7 +73,7 @@ Its the time you have been waiting for. Lets lauch 🚀 our bot.
 python3 main.py
 ```
 
-Open your telegram app, search for your bot --> Send it a text.
+Open your telegram app, search for your bot --> Send it a text. You can see a sample bot [below](#sample-bot-test)
 
 **NOTE:** All operations are done in activated virtual environment for convience
 
@@ -90,6 +90,11 @@ Clone [telegram blueprint](https://replit.com/@neurotechafrica/sarufi-telegram-b
 |sarufi_bot_id        | bot id|
 |token                |telegram token|
 |start_message        |Hi {name}, Welcome To {bot_name}, How can i help you|
+
+## Sample Bot test
+
+Here is a sample bot deployed in Telegram
+![Telegram bot sample video](./img/sample.gif)
 
 ## Issues
 
