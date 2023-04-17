@@ -1,6 +1,6 @@
 <samp>
 
-# telegram-chatbot-blueprint
+# Sarufi Telegram chatbot blueprint
 
 A blueprint for deploying telegram bots made using [Sarufi](https://docs.sarufi.io/)
 
