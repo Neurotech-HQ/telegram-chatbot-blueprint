@@ -58,10 +58,10 @@ In this part, we are going to clone the [Sarufi Telegram Chatbot deployment Blue
   In `.env`, we are going to add the following credetials. Using your favourite text editor add the following:-
 
   ```text
-  sarufi_api_key = your API KEY
-  sarufi_bot_id= bot id
-  token = telegram token
-  start_message= Hi {name}, Welcome To {bot_name}, How can i help you
+  SARUFI_API_KEY = your API KEY
+  SARUFI_BOT_ID= bot id
+  TELEGRAM_TOKEN = telegram token
+  START_MESSAGE= Hi {name}, Welcome To {bot_name}, How can i help you
   ```
 
 ## LAUNCH
@@ -84,10 +84,10 @@ Clone [telegram blueprint](https://replit.com/@neurotechafrica/sarufi-telegram-b
 
 |Secret key           | value|
 |---                  |---|
-|sarufi_api_key     |Your sarufi API KEY|
-|sarufi_bot_id        | bot id|
-|token                |telegram token|
-|start_message        |Hi {name}, Welcome To {bot_name}, How can i help you|
+|SARUFI_API_KEY     |Your sarufi API KEY|
+|SARUFI_BOT_ID        | bot id|
+|TELEGRAM_TOKEN                |telegram token|
+|START_MESSAGE        |Hi {name}, Welcome To {bot_name}, How can i help you|
 
 ## Sample Bot test
 

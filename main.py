@@ -23,8 +23,8 @@ from telegram.ext import (
 # load .env 
 load_dotenv()
 # Set up Sarufi and get bot's name
-sarufi = Sarufi(api_key=os.environ["sarufi_api_key"])
-bot_name=sarufi.get_bot(os.environ["sarufi_bot_id"]).name
+sarufi = Sarufi(api_key=os.getenv("SARUFI_API_KEY"))
+bot_name=sarufi.get_bot(os.getenv("SARUFI_BOT_ID")).name
 
 
 # initialize the logger
@@ -95,7 +95,7 @@ async def respond(message, chat_id,message_type="text")->dict:
   """
   Responds to the user's message.
   """
-  response = sarufi.chat(os.environ["sarufi_bot_id"], chat_id, message,channel="whatsapp",message_type= message_type)
+  response = sarufi.chat(os.getenv("SARUFI_BOT_ID"), chat_id, message,channel="whatsapp",message_type= message_type)
   response = response.get("actions")
   return response
 
@@ -174,7 +174,7 @@ async def start(update: Update, context: CallbackContext)->None:
   await reply_with_typing(
       update,
       context,
-      os.environ["start_message"].format(name=first_name,bot_name=bot_name),
+      os.getenv("START_MESSAGE").format(name=first_name,bot_name=bot_name),
   )
 
 
@@ -222,7 +222,7 @@ async def error(update: Update, context: CallbackContext)->None:
 
 #### MAIN FUNC ######
 def main()->None:
-  mybot= ApplicationBuilder().token(os.environ["token"]).build()
+  mybot= ApplicationBuilder().token(os.getenv("TELEGRAM_TOKEN")).build()
   
   mybot.add_handler(CommandHandler("start", start))
   mybot.add_handler(CommandHandler("help", help))
