@@ -64,6 +64,21 @@ In this part, we are going to clone the [Sarufi Telegram Chatbot deployment Blue
   START_MESSAGE= Hi {name}, Welcome To {bot_name}, How can i help you
   ```
 
+  **Note:**
+  The `Start Message` will be bot's reponse when a user sends `/start` command to your bot.
+
+  You can customize the message to your preference. You have the following variable  that you can use in your start message to make it more personalized:-
+
+    - `{name}` - User's name. This is the name the user has on Telegram
+    - `{bot_name}` - Bot's name from Sarufi Dashboard
+
+  Here is example of a start message:-
+
+  ```text
+  Hi {name}, Welcome To {bot_name}, How can i help you?
+  ```
+
+
 ## LAUNCH
 
 Its the time you have been waiting for. Lets lauch 🚀 our bot.
